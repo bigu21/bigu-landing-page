@@ -1,0 +1,38 @@
+{
+  "name": "bigu-landing-page",
+  "version": "1.0.0",
+  "description": "Bigu Landing Page",
+  "main": "index.js",
+  "readme": "README.md",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-jade": "^0.8.0",
+    "gulp-minify-css": "^0.3.10",
+    "gulp-minify-html": "^0.1.6",
+    "gulp-stylus": "^1.3.3",
+    "gulp-uglify": "^1.0.1"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "author": "Gabriel Almeida <gabriel.almeida.rj@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/bigu21/bigu-landing-page"
+  },
+  "keywords": [
+    "bigu",
+    "carona",
+    "ufrj",
+    "fundao",
+    "carsharing",
+    "carpool",
+    "ride"
+  ],
+  "bugs": {
+    "url": "https://github.com/bigu21/bigu-landing-page/issues"
+  },
+  "homepage": "https://github.com/bigu21/bigu-landing-page"
+}

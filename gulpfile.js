@@ -4,6 +4,9 @@ var minifyHTML = require('gulp-minify-html');
 var jade = require('gulp-jade');
 var concat = require('gulp-concat');
 var uglifyJS = require('gulp-uglify');
+var livereload = require('gulp-livereload');
+var tinylr = require('tiny-lr');
+var server = tinylr();
 
 gulp.task('jade', function() {
 
@@ -34,7 +37,18 @@ gulp.task('minifyHTML', function() {
 
 });
 
+gulp.task('watch', function() {
+  server.listen(35729, function(err) {
+    if(err)
+      return  console.log(err);
 
-gulp.task('default', function() {
-
+    gulp.watch('./**/*.jade', ['jade']);
+    gulp.watch('./stylesheets/*.styl', ['stylus']);
+    gulp.watch('./js/*.js', ['uglifyJS']);
+  });
 });
+
+
+gulp.task('default', ['jade', 'stylus', 'uglifyJS', 'minifyHTML', 'watch']); 
+
+

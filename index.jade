@@ -1,2 +1,24 @@
-body
-  h1 Teste
+doctype html
+html(lang="pt")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
+    title Bigu - Você no fundão, tranquilão 
+
+    // Javascripts
+    script(src="//code.jquery.com/jquery-1.11.0.min.js")
+    script(src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js")
+    script(src="js/app.js")
+
+    // Stylesheets
+    link(rel="stylesheet", href="stylesheets/style.min.css")
+  body 
+    header
+      h1 bigu!
+        p Que tal poder ir e voltar pro Fundão bem de boa? 
+    main
+      form(role="form", method="POST", action="pizza") 
+        label(for="email") Email
+        input(name="email", type="text", placeholder="Email aqui = Fundão tranquilão")
+        input(type="submit", value="Partiu!")

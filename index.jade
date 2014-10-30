@@ -4,7 +4,7 @@ html(lang="pt")
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible",content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-    title Bigu - Você no fundão, tranquilão 
+    title UFRJ de carona e sem trânsito | Bigu 
 
     // Javascripts
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
@@ -14,11 +14,24 @@ html(lang="pt")
     // Stylesheets
     link(rel="stylesheet", href="stylesheets/style.min.css")
   body 
+    video(autoplay, loop, poster)
+      source(src="videos/Bigu-Landing-Page.webm", type="video/webm")
+      source(src="videos/Bigu-Landing-Page.mp4", type="video/mp4")
     header
       h1 bigu!
-        p Que tal poder ir e voltar pro Fundão bem de boa? 
+        p.
+          Que tal ir e voltar pra <span title="Fundão, por enquanto">UFRJ</span>
+          sem trânsito e de carona? 
+        p.mobile-only Bota teu email aí embaixo pra avisarmos! <span class="no-spam">Fique tranquilo, nós odiamos spam!</span>
+        p.
+          Temos a solução, coloca seu email aí embaixo pra avisarmos logo que
+          ela sair do forno.. <span class="no-spam">Ahh, nós odiamos spam!</span>
     main
-      form(role="form", method="POST", action="") 
+      form(role="form", method="POST", action="/") 
         label(for="email") Email
-        input(name="email", type="text", placeholder="Email aqui = Fundão tranquilão")
+        input(name="email", type="email", placeholder="Email aqui = Fundão tranquilão", autofocus)
         input(type="submit", value="Partiu!")
+     .success
+       .icon-thumbs-up
+       h1 Valeu, te avisaremos jajá!
+        p Bigu!

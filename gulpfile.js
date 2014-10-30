@@ -10,6 +10,8 @@ var uglifyJS      = require('gulp-uglify');
 var livereload    = require('gulp-livereload');
 var tinylr        = require('tiny-lr');
 var server        = tinylr();
+var nodemon       = require('gulp-nodemon');
+var jshint        = require('jshint');
 var express       = require('express');
 var app           = express();
 
@@ -19,7 +21,7 @@ gulp.task('jade', function() {
     .pipe(jade({
       pretty: true
     }))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./app/'))
     .pipe(livereload(server));
 });
 
@@ -28,7 +30,7 @@ gulp.task('uglifyJS', function() {
   gulp.src('./js/*.js')
   .pipe(concat('app.js'))
   .pipe(uglifyJS())
-  .pipe(gulp.dest('./dist/js'))
+  .pipe(gulp.dest('./app/js'))
   .pipe(livereload(server));
 });
 
@@ -37,7 +39,7 @@ gulp.task('less', function() {
   .pipe(less({ compress: true }).on('error', gutil.log))
   .pipe(concat('style.min.css'))
   .pipe(autoprefixer()) 
-  .pipe(gulp.dest('./dist/stylesheets/'))
+  .pipe(gulp.dest('./app/stylesheets/'))
   .pipe(livereload(server));
 });
 
@@ -45,10 +47,28 @@ gulp.task('minifyHTML', function() {
 
 });
 
+gulp.task('lint', function () {
+  gulp.src('./**/*.js')
+    .pipe(jshint());
+});
+
 gulp.task('express', function() {
-  app.use(express.static(path.resolve('./dist')));
-  app.listen(1337);
-  gutil.log('Listening on port: 1337');
+  nodemon({ 
+    script: 'server.js', 
+    ext: 'html js', 
+    ignore: ['ignored.js'] 
+  })
+  .on('change', ['lint'])
+  .on('restart', function () {
+    console.log('Server Restarted!');
+  });
+
+
+  // if would like only static serving trough gulp
+  //app.use(express.static(path.resolve('./app')));
+
+  //app.listen(1337);
+  //gutil.log('Listening on port: 1337');
 });
 
 

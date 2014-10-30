@@ -1,29 +1,58 @@
 @import "../bower_components/bootstrap/less/bootstrap";
 @import "animations";
 
+.lemon-font {
+      font-family: Lemon;
+      text-shadow: 0px 2px 4px rgba(0,0,0,0.19);
+}
+
 body {
-  background: url(../images/bg-mapa.jpg) no-repeat center center fixed;
-  background-size: cover;
+  min-height: 100%;  /* [> Fallback for browsers do NOT support vh unit <] */
+  min-height: 100vh; /* [> These two lines are counted as one :-)       <] */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+  color: #FFFFFF;
+
+  video {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+    background: url(../images/video-poster.jpg) no-repeat;
+    background-size: cover;
+  }
+}
+
+.success {
+  display: none;
+
+  [class^="icon-"], [class*=" icon-"] {
+    font-size: 140px;
+    opacity: .8;
+  }
+
+  .text-center;
+
+  h1 {
+  .lemon-font;
+      font-size: 64px;
+      line-height: 83px;
+
+    p {
+      &:extend(header h1 p); 
+    }
+  }
+
 }
 
 header {
 
   h1 {
+      .lemon-font;
       .text-center;
-      font-family: Lemon;
       font-size: 64px;
-      color: #FFFFFF;
       line-height: 83px;
-      text-shadow: 0px 2px 4px rgba(0,0,0,0.19);
-      /*animation: getIn 1500ms linear both;*/
-      animation-delay: 800ms;
-      animation-fill-mode:forwards;
       display: none;
 
     p {
@@ -33,6 +62,18 @@ header {
       text-shadow: 0 0 0;
       margin-top: 15px;
     }
+
+    p:last-of-type, p.mobile-only {
+      font-size: 16px;
+      line-height: 20px;
+      .hidden-xs;
+    }
+
+    p.mobile-only {
+      width: 100%;
+      .visible-xs; 
+    }
+   
   }
 
 }
@@ -55,28 +96,33 @@ main {
       .sr-only;
     }
 
-    input[type="text"] {
-    border-radius: 3px;
-    background: #FFFFFF;
-    border: 1px solid #8EA0B2;
-    box-shadow:         inset 0px 1px 3px 0px rgba(0,0,0,0.50);
-    font-family: Helvetica;
-    font-size: 14px;
-    color: #9D8C8C;
-    line-height: 17px;
-    opacity: .65;
-    margin: 10px;
+    input[type="email"] {
+      border-radius: 3px;
+      background: #FFFFFF;
+      border: 1px solid #8EA0B2;
+      box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.50);
+      font-family: Helvetica;
+      font-size: 14px;
+      color: #9D8C8C;
+      line-height: 17px;
+      opacity: .65;
+      margin: 10px;
 
-    width: 375px;
-    height: 45px;
-    .text-center;
+      width: 375px;
+      height: 45px;
+      .text-center;
+
+      &:focus.error {
+        color: red;
+        outline-color: red; 
+      }
     }
 
     input[type="submit"] {
       .btn;
       border-radius: 6px;
       border: 1px solid #76B5CF;
-      box-shadow:         0px 1px 2px 0px rgba(0,0,0,0.20);
+      box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.20);
       background-color: transparent;
 
       font-family: LucidaGrande;
@@ -103,13 +149,25 @@ main {
 }
 
 @media (max-width: @screen-sm-max) {
-  main form input[type="text"] {
+  body {
+    background: url(../images/bg-mapa.jpg) no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  main form input[type="email"] {
     max-width: 270px;
   }
 
   header h1 p {
     width: 270px;
     font-size: 20px;
+
+    span.no-spam {
+      display: block;
+      font-style: italic;
+      font-size: 12px;
+    }
+
   }
 
 }

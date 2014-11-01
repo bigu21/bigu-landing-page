@@ -21,6 +21,7 @@ $('form').submit(function(ev) {
       var $form = $('form input[type="email"]');
       $form.focus();
       $form.addClass('error wobble');
+      $form.val('').attr('placeholder', 'Ops, você já se cadastrou!').select().focus();
 
       setTimeout(function() {
         $form.removeClass('wobble');

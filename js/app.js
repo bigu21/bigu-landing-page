@@ -54,7 +54,16 @@ $(document).ready(function() {
       var $form = $('form input[type="email"]');
       $form.focus();
       $form.addClass('error wobble');
-      $form.val('').attr('placeholder', 'Ops, você já se cadastrou!').select().focus();
+
+      var msg;
+      if(data.error.errorType === 'already-registered')
+        msg = 'Ops, você já se cadastrou!';
+      else if(data.error.errorType === 'invalid-email')
+        msg = 'Ops, email inválido!';
+      else(data.error.errorType === 'invalid-email')
+        msg = 'Ops, erro, tente depois!';
+
+      $form.val('').attr('placeholder', msg).select().focus();
 
       setTimeout(function() {
         $form.removeClass('wobble');

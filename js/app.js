@@ -42,7 +42,7 @@ $(document).ready(function() {
   setTimeout(function() {
     $('header h1').show().css('animation', 'getIn 1500ms linear both');
     $('main').show().find('form').css('animation', 'fadeIn 1000ms linear both');
-  }, 800);
+  }, 1000);
 
 
   $('form').submit(function(ev) {
@@ -56,9 +56,10 @@ $(document).ready(function() {
       $form.addClass('error wobble');
 
       var msg;
-      if(data.error.errorType === 'already-registered')
+
+      if(data.errorType === 'already-registered')
         msg = 'Ops, você já se cadastrou!';
-      else if(data.error.errorType === 'invalid-email')
+      else if(data.errorType === 'invalid-email')
         msg = 'Ops, email inválido!';
       else
         msg = 'Ops, erro, tente novamente!';

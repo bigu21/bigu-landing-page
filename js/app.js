@@ -60,8 +60,8 @@ $(document).ready(function() {
         msg = 'Ops, você já se cadastrou!';
       else if(data.error.errorType === 'invalid-email')
         msg = 'Ops, email inválido!';
-      else(data.error.errorType === 'invalid-email')
-        msg = 'Ops, erro, tente depois!';
+      else
+        msg = 'Ops, erro, tente novamente!';
 
       $form.val('').attr('placeholder', msg).select().focus();
 

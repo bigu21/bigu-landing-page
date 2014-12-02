@@ -13,7 +13,7 @@ $(document).ready(function() {
   var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
   var attachVideo = function() {
-    if(! attachVideo && w >= 768) {
+    if(! videoAttached && w >= 768) {
       var video = document.createElement('video');
 
       video.autoplay = true;
